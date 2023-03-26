@@ -44,6 +44,9 @@
                             <constraint firstAttribute="bottom" secondItem="iea-mJ-5Yh" secondAttribute="bottom" id="o7M-dQ-eex"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="iea-mJ-5Yh" id="tSJ-M8-EKg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

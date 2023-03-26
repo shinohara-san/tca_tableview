@@ -9,17 +9,22 @@ import ComposableArchitecture
 
 struct BookList: ReducerProtocol {
     struct State: Equatable {
-        var books: IdentifiedArrayOf<Book.State> = []
+        var books: [Book] = []
     }
     
     enum Action: Equatable {
-        case book(id: Book.State.ID, action: Book.Action)
+        case fetchBooks
+        case setBooks(books: [Book])
     }
 
-    var body: some ReducerProtocol<State, Action> {
-        EmptyReducer()
-            .forEach(\.books, action: /Action.book) {
-                Book()
-            }
+    func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
+        switch action {
+        case .fetchBooks:
+            let books = [Book(title: "ブルーロック"), Book(title: "呪術廻戦"), Book(title: "ワンピース")]
+            return .send(.setBooks(books: books))
+        case .setBooks(books: let books):
+            state.books = books
+            return .none
+        }
     }
 }

@@ -65,12 +65,12 @@
 				1B71CF7629D0032D005FAB3C /* AppDelegate.swift */,
 				1B71CF7829D0032D005FAB3C /* SceneDelegate.swift */,
 				1B71CF7A29D0032D005FAB3C /* BookListViewController.swift */,
+				1B71CF8D29D006A8005FAB3C /* BookList.swift */,
+				1B71CF8F29D00860005FAB3C /* Book.swift */,
 				1B71CF7C29D0032D005FAB3C /* Main.storyboard */,
 				1B71CF7F29D0032E005FAB3C /* Assets.xcassets */,
 				1B71CF8129D0032E005FAB3C /* LaunchScreen.storyboard */,
 				1B71CF8429D0032E005FAB3C /* Info.plist */,
-				1B71CF8D29D006A8005FAB3C /* BookList.swift */,
-				1B71CF8F29D00860005FAB3C /* Book.swift */,
 			);
 			path = tca_tableview;
 			sourceTree = "<group>";
