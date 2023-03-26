@@ -9,17 +9,18 @@
 /* Begin PBXBuildFile section */
 		1B71CF7729D0032D005FAB3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B71CF7629D0032D005FAB3C /* AppDelegate.swift */; };
 		1B71CF7929D0032D005FAB3C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B71CF7829D0032D005FAB3C /* SceneDelegate.swift */; };
-		1B71CF7B29D0032D005FAB3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B71CF7A29D0032D005FAB3C /* ViewController.swift */; };
+		1B71CF7B29D0032D005FAB3C /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B71CF7A29D0032D005FAB3C /* BookListViewController.swift */; };
 		1B71CF7E29D0032D005FAB3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B71CF7C29D0032D005FAB3C /* Main.storyboard */; };
 		1B71CF8029D0032E005FAB3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B71CF7F29D0032E005FAB3C /* Assets.xcassets */; };
 		1B71CF8329D0032E005FAB3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B71CF8129D0032E005FAB3C /* LaunchScreen.storyboard */; };
+		1B71CF8C29D003B2005FAB3C /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 1B71CF8B29D003B2005FAB3C /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1B71CF7329D0032D005FAB3C /* tca_tableview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tca_tableview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B71CF7629D0032D005FAB3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B71CF7829D0032D005FAB3C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1B71CF7A29D0032D005FAB3C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1B71CF7A29D0032D005FAB3C /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
 		1B71CF7D29D0032D005FAB3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1B71CF7F29D0032E005FAB3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B71CF8229D0032E005FAB3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B71CF8C29D003B2005FAB3C /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +60,7 @@
 			children = (
 				1B71CF7629D0032D005FAB3C /* AppDelegate.swift */,
 				1B71CF7829D0032D005FAB3C /* SceneDelegate.swift */,
-				1B71CF7A29D0032D005FAB3C /* ViewController.swift */,
+				1B71CF7A29D0032D005FAB3C /* BookListViewController.swift */,
 				1B71CF7C29D0032D005FAB3C /* Main.storyboard */,
 				1B71CF7F29D0032E005FAB3C /* Assets.xcassets */,
 				1B71CF8129D0032E005FAB3C /* LaunchScreen.storyboard */,
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = tca_tableview;
+			packageProductDependencies = (
+				1B71CF8B29D003B2005FAB3C /* ComposableArchitecture */,
+			);
 			productName = tca_tableview;
 			productReference = 1B71CF7329D0032D005FAB3C /* tca_tableview.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,9 @@
 				Base,
 			);
 			mainGroup = 1B71CF6A29D0032D005FAB3C;
+			packageReferences = (
+				1B71CF8A29D003B2005FAB3C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = 1B71CF7429D0032D005FAB3C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,7 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B71CF7B29D0032D005FAB3C /* ViewController.swift in Sources */,
+				1B71CF7B29D0032D005FAB3C /* BookListViewController.swift in Sources */,
 				1B71CF7729D0032D005FAB3C /* AppDelegate.swift in Sources */,
 				1B71CF7929D0032D005FAB3C /* SceneDelegate.swift in Sources */,
 			);
@@ -358,6 +366,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1B71CF8A29D003B2005FAB3C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = exactVersion;
+				version = 0.52.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1B71CF8B29D003B2005FAB3C /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B71CF8A29D003B2005FAB3C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1B71CF6B29D0032D005FAB3C /* Project object */;
 }
