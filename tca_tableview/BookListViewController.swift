@@ -18,8 +18,9 @@ class BookListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Books - TCA"
         self.viewStore.send(.fetchBooks)
-        
+
         self.viewStore.publisher
             .sink { [weak self] in
                 self?.books = $0.books
@@ -27,8 +28,6 @@ class BookListViewController: UIViewController {
             }
             .store(in: &cancellables)
     }
-
-
 }
 
 extension BookListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -40,5 +39,14 @@ extension BookListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = books[indexPath.row].title
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let storyboard = UIStoryboard(name: "BookDetail", bundle: nil)
+        let book = books[indexPath.row]
+        let vc = storyboard.instantiateViewController(withIdentifier: "Detail") as! BookDetailViewController
+        vc.instantiate(store: Store(initialState: BookDetail.State(book: book), reducer: BookDetail()))
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
