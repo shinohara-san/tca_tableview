@@ -24,7 +24,7 @@ class BookDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewStore.publisher
-            .map(\.book?.title)
+            .map(\.book?.volumeInfo.title)
             .sink { [weak self] title in
                 guard let self else { return }
                 self.titleLabel.text = title
