@@ -12,11 +12,13 @@ import Foundation
 struct BookList: ReducerProtocol {
     struct State: Equatable {
         var books: [Book] = []
+        var isShowingAlert = false
     }
     
     enum Action: Equatable {
         case fetchBooks
         case setBooks(TaskResult<[Book]>)
+        case dismissAlert
     }
 
     func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
@@ -32,8 +34,11 @@ struct BookList: ReducerProtocol {
         case .setBooks(.success(let books)):
             state.books = books
             return .none
-        case .setBooks(.failure(let error)):
-            print(error)
+        case .setBooks(.failure(_)):
+            state.isShowingAlert = true
+            return .none
+        case .dismissAlert:
+            state.isShowingAlert = false
             return .none
         }
     }

@@ -27,6 +27,22 @@ class BookListViewController: UIViewController {
                 self?.tableView.reloadData()
             }
             .store(in: &cancellables)
+
+        self.viewStore.publisher
+            .map(\.isShowingAlert)
+            .filter { $0 }
+            .sink { [weak self] _ in
+                self?.showAlert()
+            }
+            .store(in: &cancellables)
+    }
+
+    private func showAlert() {
+        let alert = UIAlertController(title: "Error", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+            self?.viewStore.send(.dismissAlert)
+        })
+        present(alert, animated: true)
     }
 }
 
