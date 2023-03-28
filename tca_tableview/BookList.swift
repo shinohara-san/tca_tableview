@@ -13,6 +13,7 @@ struct BookList: ReducerProtocol {
     struct State: Equatable {
         var books: [Book] = []
         var isShowingAlert = false
+        var errorMessage = ""
         var isShowingIndicator = false
     }
     
@@ -37,8 +38,9 @@ struct BookList: ReducerProtocol {
             state.isShowingIndicator = false
             state.books = books
             return .none
-        case .setBooks(.failure(_)):
+        case .setBooks(.failure(let error)):
             state.isShowingIndicator = false
+            state.errorMessage = error.localizedDescription
             state.isShowingAlert = true
             return .none
         case .dismissAlert:
