@@ -50,6 +50,10 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="0d6-I3-sUa"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" id="znr-iC-ZRp">
+                                <rect key="frame" x="0.0" y="416" width="393" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -62,6 +66,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Vnq-hh-Dbt"/>
                     <connections>
+                        <outlet property="indicator" destination="znr-iC-ZRp" id="ix1-qR-kg6"/>
                         <outlet property="tableView" destination="iea-mJ-5Yh" id="tSJ-M8-EKg"/>
                     </connections>
                 </viewController>

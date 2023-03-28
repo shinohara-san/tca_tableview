@@ -13,6 +13,7 @@ struct BookList: ReducerProtocol {
     struct State: Equatable {
         var books: [Book] = []
         var isShowingAlert = false
+        var isShowingIndicator = false
     }
     
     enum Action: Equatable {
@@ -25,6 +26,7 @@ struct BookList: ReducerProtocol {
         enum SaveID {}
         switch action {
         case .fetchBooks:
+            state.isShowingIndicator = true
             return .task {
                 await .setBooks(
                     TaskResult { try await getData() }
@@ -32,9 +34,11 @@ struct BookList: ReducerProtocol {
             }
             .cancellable(id: SaveID.self)
         case .setBooks(.success(let books)):
+            state.isShowingIndicator = false
             state.books = books
             return .none
         case .setBooks(.failure(_)):
+            state.isShowingIndicator = false
             state.isShowingAlert = true
             return .none
         case .dismissAlert:
