@@ -23,6 +23,8 @@ struct BookList: ReducerProtocol {
         case dismissAlert
     }
 
+    @Dependency(\.bookClient) var bookClient
+
     func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
         enum SaveID {}
         switch action {
@@ -30,7 +32,7 @@ struct BookList: ReducerProtocol {
             state.isShowingIndicator = true
             return .task {
                 await .setBooks(
-                    TaskResult { try await getData() }
+                    TaskResult { try await bookClient.fetch() }
                 )
             }
             .cancellable(id: SaveID.self)
@@ -48,24 +50,4 @@ struct BookList: ReducerProtocol {
             return .none
         }
     }
-}
-
-func getData() async throws -> [Book] {
-    let urlString = "https://www.googleapis.com/books/v1/volumes?q=quilting"
-    guard let url = URL(string: urlString) else {
-        throw APIError.invalidURL
-    }
-    var request = URLRequest(url: url)
-    request.httpMethod = "GET"
-    let (data, _) = try await URLSession.shared.data(for: request)
-    do {
-        let bookList = try JSONDecoder().decode(BookListItems.self, from: data)
-        return bookList.items
-    } catch {
-        throw APIError.decodeError
-    }
-}
-
-enum APIError: Error {
-    case invalidURL, decodeError
 }
