@@ -19,9 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         if !_XCTIsTesting {
             self.window = (scene as? UIWindowScene).map { UIWindow(windowScene: $0) }
-            let view = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "bookList")
-            self.window?.rootViewController = UINavigationController(
-                rootViewController: view)
+            let bookListViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "bookList")
+            self.window?.rootViewController = UINavigationController(rootViewController: bookListViewController)
             self.window?.makeKeyAndVisible()
         }
     }

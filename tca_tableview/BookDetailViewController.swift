@@ -25,9 +25,9 @@ class BookDetailViewController: UIViewController {
         super.viewDidLoad()
         viewStore.publisher
             .map(\.book?.volumeInfo.title)
-            .sink { [weak self] title in
+            .sink { [weak self] in
                 guard let self else { return }
-                self.titleLabel.text = title
+                self.titleLabel.text = $0
             }
             .store(in: &cancellables)
     }

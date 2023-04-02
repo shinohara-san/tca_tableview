@@ -13,17 +13,18 @@ import Combine
 @MainActor
 final class BookListTests: XCTestCase {
 
-    func testBooks() async {
-        let store = TestStore(
-            initialState: BookList.State(),
-            reducer: BookList()
-        )
+    func testFetchBooksSuccess() async {
 
         let books = [Book(id: UUID().uuidString, volumeInfo: .init(title: "book1")),
                      Book(id: UUID().uuidString, volumeInfo: .init(title: "book2")),
                      Book(id: UUID().uuidString, volumeInfo: .init(title: "book3"))]
-
-        store.dependencies.bookClient.fetch = { books }
+        
+        let store = TestStore(
+            initialState: BookList.State(),
+            reducer: BookList()
+        ) {
+            $0.bookClient.fetch = { books }
+        }
 
         await store.send(.fetchBooks) {
             $0.isShowingIndicator = true
